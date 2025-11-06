@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Красивый простой сайт — пример</title>
+  <meta name="description" content="Простой и красивый одностраничный шаблон HTML + CSS" />
+
+  <!-- Шрифты (внешний источник, можно убрать если нужно) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;            /* тёмный фон */
+      --card:#0b1220;          /* карточки */
+      --muted:#9aa4b2;         /* приглушённый текст */
+      --accent-1:#7c3aed;      /* фиолетовый */
+      --accent-2:#06b6d4;      /* бирюзовый */
+      --glass: rgba(255,255,255,0.03);
+      --radius:16px;
+      --max-width:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(6,182,212,0.08), transparent),
+                  var(--bg);
+      color: #e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px 20px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:28px;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .logo{
+      width:48px;height:48px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:700;
+      box-shadow:0 6px 18px rgba(2,6,23,0.6);
+    }
+
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{
+      color:var(--muted);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px;
+    }
+    nav a:hover{color: #fff;background:var(--glass)}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;
+      margin-bottom:28px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    h1{margin:0 0 10px 0;font-size:clamp(22px,3.2vw,34px);line-height:1.02}
+    p.lead{color:var(--muted);margin:0 0 18px 0}
+
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{
+      display:inline-block;padding:10px 16px;border-radius:12px;font-weight:700;text-decoration:none;
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#041022;box-shadow:0 6px 18px rgba(12,16,32,0.6);
+    }
+    .btn.secondary{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:600;padding:10px 14px
+    }
+
+    /* Info panel */
+    .info{
+      display:grid;gap:12px
+    }
+    .info .stat{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,0.01)}
+    .stat strong{font-size:1.05rem}
+    .small{color:var(--muted);font-size:0.9rem}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .feature{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));min-height:120px}
+    .feature h3{margin:0 0 8px 0}
+    .feature p{margin:0;color:var(--muted)}
+
+    /* Footer */
+    footer{margin-top:28px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      header{flex-direction:column;align-items:flex-start;gap:16px}
+      nav{order:2}
+      .features{grid-template-columns:1fr}
+      .logo{width:42px;height:42px}
+      body{padding:22px}
+    }
+
+    /* Little animated accent */
+    .sparkle{
+      display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;background:linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      transform-origin:center;transition:transform .25s ease;
+    }
+    .sparkle:hover{transform:translateY(-4px) rotate(-2deg)}
+
+    /* Accessibility focus */
+    a:focus{outline:3px solid rgba(124,58,237,0.16);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="brand">
+        <div class="logo">SB</div>
+        <div>
+          <div style="font-weight:700">SimpleBeautiful</div>
+          <div class="small">Минималистичный шаблон</div>
+        </div>
+      </div>
+
+      <nav aria-label="Главная навигация">
+        <a href="#features">Особенности</a>
+        <a href="#how">Как работает</a>
+        <a href="#contact">Контакт</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card">
+          <h1>Красивая простая страница, готовая к использованию</h1>
+          <p class="lead">Шаблон — semantic HTML + чистый CSS. Подходит для промо-страниц, резюме или небольших проектов.</p>
+
+          <div class="cta-row">
+            <a class="btn" href="#contact">Связаться</a>
+            <a class="btn secondary" href="#features">Узнать больше</a>
+            <span style="margin-left:auto" class="sparkle">Новый</span>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <div class="info">
+            <div class="stat"><div><strong>3</strong><div class="small">Раздела</div></div><div class="small">✓</div></div>
+            <div class="stat"><div><strong>100+</strong><div class="small">Использований</div></div><div class="small">★</div></div>
+          </div>
+        </div>
+
+        <aside class="card" aria-label="Демонстрация">
+          <h3 style="margin-top:0">Превью</h3>
+          <p class="small">Небольшой макет — карточки, сетка и аккуратные кнопки. Всё масштабируется под экран.</p>
+
+          <!-- Простая иллюстрация SVG -->
+          <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+            <svg width="100" height="64" viewBox="0 0 100 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:8px;background:linear-gradient(90deg, rgba(124,58,237,0.12), rgba(6,182,212,0.08));">
+              <rect width="100" height="64" rx="8" fill="transparent"/>
+              <circle cx="24" cy="32" r="8" fill="#ffffff" opacity="0.12"/>
+              <rect x="42" y="18" width="44" height="28" rx="4" fill="#ffffff" opacity="0.06"/>
+            </svg>
+
+            <svg width="100" height="64" viewBox="0 0 100 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:8px;background:linear-gradient(90deg, rgba(6,182,212,0.08), rgba(124,58,237,0.06));">
+              <rect width="100" height="64" rx="8" fill="transparent"/>
+              <rect x="14" y="14" width="72" height="10" rx="4" fill="#fff" opacity="0.06"/>
+              <rect x="14" y="34" width="52" height="8" rx="4" fill="#fff" opacity="0.04"/>
+            </svg>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" class="card">
+        <h2 style="margin-top:0">Особенности</h2>
+        <p class="small">Коротко о том, почему этот шаблон удобен.</p>
+
+        <div style="height:16px"></div>
+        <div class="features">
+          <div class="feature">
+            <h3>Адаптивный дизайн</h3>
+            <p>Сетка и гибкие размеры обеспечивают корректный вид на телефоне и на большом мониторе.</p>
+          </div>
+          <div class="feature">
+            <h3>Минимализм</h3>
+            <p>Чистая типографика и пространство вокруг элементов делают контент читабельным.</p>
+          </div>
+          <div class="feature">
+            <h3>Лёгкая кастомизация</h3>
+            <p>Переменные CSS в начале файла позволяют быстро сменить цветовую палитру.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" style="margin-top:18px" class="card">
+        <h2 style="margin-top:0">Как использовать</h2>
+        <ol class="small">
+          <li>Скопируйте этот файл в <code>index.html</code>.</li>
+          <li>Отредактируйте текст, цвета и ссылки под свой проект.</li>
+          <li>Добавьте свои изображения или замените SVG на иллюстрации.</li>
+        </ol>
+      </section>
+
+      <section id="contact" style="margin-top:18px" class="card">
+        <h2 style="margin-top:0">Контакт</h2>
+        <p class="small">Напишите: <a href="mailto:hello@example.com">hello@example.com</a></p>
+      </section>
+
+      <footer>
+        <div class="small">© <strong>SimpleBeautiful</strong> — Шаблон 2025</div>
+        <div class="small">Сделано с ❤</div>
+      </footer>
+    </main>
+
+  </div>
+</body>
+</html>
